@@ -23,7 +23,7 @@ public class PlanEstudio_Create extends AppCompatActivity {
     int hourArrive,minuteArrive;
     int hourStart, minuteStart;
     MaterialCardView spanishCardView,mathCardView,englishCardView;
-    String cardSelectd,studyPlanName;
+    String cardSelectd,studyPlanName,reasonSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +82,38 @@ public class PlanEstudio_Create extends AppCompatActivity {
         evaluacionButton = findViewById(R.id.evaluacionButton);
         quizButton = findViewById(R.id.quizButton);
 
+        //Change refuerzoButton listener
+        refuerzoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reasonSelected = "refuerzo";
+                refuerzoButton.setChecked(true);
+                evaluacionButton.setChecked(false);
+                quizButton.setChecked(false);
+            }
+        });
+
+        //change evaluacionButton listener
+        evaluacionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reasonSelected = "evaluacion";
+                evaluacionButton.setChecked(true);
+                refuerzoButton.setChecked(false);
+                quizButton.setChecked(false);
+            }
+        });
+
+        quizButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reasonSelected = "quiz";
+                quizButton.setChecked(true);
+                refuerzoButton.setChecked(false);
+                evaluacionButton.setChecked(false);
+            }
+        });
+
 
     }
 
@@ -122,24 +154,6 @@ public class PlanEstudio_Create extends AppCompatActivity {
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, timeSetListener, hourStart, minuteStart, true);
         timePickerDialog.setTitle("Seleccionar Hora");
         timePickerDialog.show();
-    }
-
-    public void checkableReason(View view) {
-        if (refuerzoButton.isChecked()) {
-            System.out.println("ENTRA A REFUERZO");
-            evaluacionButton.setChecked(false);
-            quizButton.setChecked(false);
-        }
-        else if(evaluacionButton.isChecked()){
-            System.out.println("ENTRA A EVALUACION");
-            refuerzoButton.setChecked(false);
-            quizButton.setChecked(false);
-        }
-        else if(quizButton.isChecked()){
-            System.out.println("ENTRA A QUIZ");
-            refuerzoButton.setChecked(false);
-            evaluacionButton.setChecked(false);
-        }
     }
 
 }
