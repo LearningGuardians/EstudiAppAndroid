@@ -6,15 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PlanEstudio_Create">
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-
-
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="1234dp"
+        tools:layout_editor_absoluteY="1dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar2"
@@ -49,8 +44,8 @@
                 android:id="@+id/spanishCard"
                 android:layout_width="109dp"
                 android:layout_height="232dp"
-                android:elevation="10dp"
                 android:checkable="true"
+                android:elevation="10dp"
                 app:cardElevation="10dp"
                 app:cardMaxElevation="10dp"
                 app:strokeColor="@color/border_selector"
@@ -88,7 +83,7 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="?android:attr/listDivider" />
+                android:background="@color/white" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/matematicasCard"
@@ -130,7 +125,7 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="?android:attr/listDivider" />
+                android:background="@color/white" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/inglesCard"
@@ -176,7 +171,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="46dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="47dp"
             android:fontFamily="monospace"
             android:text="Escoge la materia que quieres reforzar"
@@ -205,22 +200,23 @@
             android:layout_width="wrap_content"
             android:layout_height="19dp"
             android:layout_marginStart="34dp"
-            android:layout_marginTop="43dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="34dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="monospace"
             android:text="Selecciona tu hora de llegada del colegio"
             app:layout_constraintBottom_toTopOf="@+id/hourButton"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/idPlanEstudio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="65dp"
             android:layout_marginEnd="101dp"
             android:autoText="true"
             android:editable="true"
@@ -243,7 +239,7 @@
             android:layout_width="wrap_content"
             android:layout_height="19dp"
             android:layout_marginStart="96dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="97dp"
             android:fontFamily="monospace"
             android:text="Nombre del plan de estudio"
@@ -256,14 +252,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="34dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="49dp"
             android:fontFamily="monospace"
             android:text="Selecciona hora para empezar el estudio"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+            app:layout_constraintTop_toBottomOf="@+id/idPlanEstudio" />
 
         <Button
             android:id="@+id/startTimeButton"
@@ -281,17 +277,101 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-        <Button
-            android:id="@+id/button2"
+        <TextView
+            android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="165dp"
-            android:layout_marginTop="102dp"
-            android:layout_marginEnd="166dp"
-            android:text="Button"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="13dp"
+            android:backgroundTint="@android:color/background_light"
+            android:fontFamily="monospace"
+            android:text="Razón por la que usas el plan de estudio"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/startTimeButton" />
+
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="100dp"
+            android:backgroundTint="@android:color/holo_blue_light"
+            android:text="CREAR PLAN DE ESTUDIOS"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="428dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginBottom="75dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/refuerzoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:backgroundTint="@android:color/holo_blue_light"
+                android:checkable="true"
+                android:clickable="true"
+                android:onClick="checkableReason"
+                android:text="Refuerzo"
+                app:strokeColor="@color/border_selector"
+                app:strokeWidth="2dp" />
+
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="3dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/white" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/evaluacionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:clickable="true"
+                android:onClick="checkableReason"
+                android:backgroundTint="@android:color/holo_blue_light"
+                android:text="Evaluación"
+                app:strokeColor="@color/border_selector"
+                app:strokeWidth="2dp"/>
+
+            <View
+                android:id="@+id/divider5"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/white" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/quizButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="40dp"
+                android:clickable="true"
+                android:onClick="checkableReason"
+                app:strokeColor="@color/border_selector"
+                app:strokeWidth="2dp"
+                android:backgroundTint="@android:color/holo_blue_light"
+                android:text="Quiz" />
+        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
