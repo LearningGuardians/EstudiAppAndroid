@@ -37,13 +37,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7">
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/spanishCard"
             android:layout_width="109dp"
             android:layout_height="232dp"
             android:elevation="10dp"
+            android:checkable="true"
             app:cardElevation="10dp"
             app:cardMaxElevation="10dp"
-            app:strokeColor="#554F4F"
-            app:strokeWidth="2dp" >
+            app:strokeColor="@color/border_selector"
+            app:strokeWidth="2dp">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -53,7 +55,7 @@
                 app:srcCompat="@drawable/espa_ol" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/spanishTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
@@ -80,10 +82,12 @@
             android:background="?android:attr/listDivider" />
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/matematicasCard"
             android:layout_width="109dp"
             android:layout_height="232dp"
-            app:strokeColor="#554F4F"
-            app:strokeWidth="2dp" >
+            android:checkable="true"
+            app:strokeColor="@color/border_selector"
+            app:strokeWidth="2dp">
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -93,7 +97,7 @@
                 app:srcCompat="@drawable/matematicas" />
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/mathTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
@@ -120,11 +124,13 @@
             android:background="?android:attr/listDivider" />
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/inglesCard"
             android:layout_width="109dp"
             android:layout_height="230dp"
+            android:checkable="true"
             app:cardElevation="10dp"
-            app:strokeColor="#554F4F"
-            app:strokeWidth="2dp" >
+            app:strokeColor="@color/border_selector"
+            app:strokeWidth="2dp">
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -134,7 +140,7 @@
                 app:srcCompat="@drawable/ingles" />
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/englishTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
@@ -171,7 +177,6 @@
 
     <Button
         android:id="@+id/hourButton"
-        android:onClick="timePick"
         android:layout_width="177dp"
         android:layout_height="67dp"
         android:layout_marginStart="117dp"
@@ -179,8 +184,8 @@
         android:layout_marginEnd="117dp"
         android:backgroundTint="@android:color/white"
         android:elevation="1dp"
-        android:text="Seleccionar Hora
-"
+        android:onClick="timePick"
+        android:text="HORA DE LLEGADA"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -200,6 +205,71 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="101dp"
+        android:autoText="true"
+        android:editable="true"
+        android:elevation="0dp"
+        android:ems="10"
+        android:fontFamily="monospace"
+        android:hint="Ejemplo: Estudio 1"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textColor="#7E7373"
+        android:textColorHint="#C1BBBB"
+        android:typeface="monospace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hourButton" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="97dp"
+        android:fontFamily="monospace"
+        android:text="Nombre del plan de estudio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hourButton" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="49dp"
+        android:fontFamily="monospace"
+        android:text="Selecciona hora para empezar el estudio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="177dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="117dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="117dp"
+        android:backgroundTint="@android:color/white"
+        android:elevation="1dp"
+        android:text="HORA DE COMIENZO"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
