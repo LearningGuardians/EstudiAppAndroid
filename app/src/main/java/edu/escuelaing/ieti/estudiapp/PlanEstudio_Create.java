@@ -14,7 +14,7 @@ import java.util.Locale;
 
 public class PlanEstudio_Create extends AppCompatActivity {
 
-    Button timeButton;
+    Button timeButton, secondTimeButton;
     int hour,minute;
     MaterialCardView spanishCardView,mathCardView,englishCardView;
 
@@ -23,6 +23,7 @@ public class PlanEstudio_Create extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_estudio_create);
         timeButton = findViewById(R.id.hourButton);
+        secondTimeButton = findViewById(R.id.startTimeButton);
 
         //Cards new listener
          spanishCardView = findViewById(R.id.spanishCard);
@@ -30,7 +31,7 @@ public class PlanEstudio_Create extends AppCompatActivity {
          englishCardView = findViewById(R.id.inglesCard);
 
 
-         //change listener
+         //change listener spanish card
         spanishCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,6 +41,7 @@ public class PlanEstudio_Create extends AppCompatActivity {
             }
         });
 
+        //change listener math card
         mathCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,6 +51,7 @@ public class PlanEstudio_Create extends AppCompatActivity {
             }
         });
 
+        //change listener english card
         englishCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +74,25 @@ public class PlanEstudio_Create extends AppCompatActivity {
                 hour = selectedHour;
                 minute = selectedMinute;
                 timeButton.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute));
+            }
+        };
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, timeSetListener, hour, minute, true);
+        timePickerDialog.setTitle("Seleccionar Hora");
+        timePickerDialog.show();
+    }
+
+    /**
+     * Funcion generada para escuchar la hora que escoja el usuario para empezar a estudiar
+     * @param view
+     */
+    public void timePick2(View view){
+        TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                hour = selectedHour;
+                minute = selectedMinute;
+                secondTimeButton.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute));
             }
         };
 
