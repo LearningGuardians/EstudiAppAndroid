@@ -23,6 +23,10 @@ public class LearningIA {
 
     private final PlanOperativo p_operativo;
 
+    private String QUIZ_MAX = "21:30";
+    private String EVAL_MAX= "23:20";
+    private String REF_MAX = "20:00";
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public LearningIA(PlanOperativo planOperativo) {
         this.p_operativo = planOperativo;
@@ -45,15 +49,18 @@ public class LearningIA {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void reparticionEstudio() {
         System.out.println("ENTRA A REPARTICION");
-        switch ("") {
-            case "Refuerzo":
-                this.particionEstudio = particion(15, 40, LocalTime.of(8, 0));
+        switch (p_operativo.getRazon()) {
+            case "refuerzo":
+                System.out.println("ENTRA A REFUERZO");
+                this.particionEstudio = particion(15, 40, LocalTime.parse(REF_MAX));
                 break;
-            case "Quiz":
-                this.particionEstudio = particion(20, 30, LocalTime.of(9, 30));
+            case "quiz":
+                System.out.println("ENTRA A QUIZ");
+                this.particionEstudio = particion(20, 30, LocalTime.parse(QUIZ_MAX));
                 break;
-            case "Evaluacion":
-                this.particionEstudio = particion(35, 20, LocalTime.of(11, 20));
+            case "evaluacion":
+                System.out.println("ENTRA A EVALUACION");
+                this.particionEstudio = particion(35, 20, LocalTime.parse(EVAL_MAX));
                 break;
 
         }
@@ -73,7 +80,7 @@ public class LearningIA {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public ConcurrentHashMap particion(int tiempoEstudio, int descanso, LocalTime horaMaxima) {
         ConcurrentHashMap<String, Pair> particionFinal = new ConcurrentHashMap<>();
-        LocalTime horaInicio = this.LlegadaCasa;
+        LocalTime horaInicio = LocalTime.parse(p_operativo.getHoraComienzo());
         LocalTime horaFin = null;
         int var = 0;
         while (!horaInicio.equals(horaMaxima)) {
@@ -84,6 +91,10 @@ public class LearningIA {
             particionFinal.put("Estudio_" + var, new Pair<>(horaInicio, horaFin));
             // se deja la nueva hora de inicio como la de fin mas un descanso, segun lo establecido por IA
             horaInicio = horaInicio.plusMinutes(descanso);
+        }
+
+        for(String key: particionFinal.keySet()){
+            System.out.println(key+","+particionFinal.get(key));
         }
         return particionFinal;
     }
