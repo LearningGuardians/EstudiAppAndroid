@@ -35,26 +35,7 @@ public class LearningIA {
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void start() {
-        this.extraCurriculares = insertExtraCurriculares();
         reparticionEstudio(TipoEstudio());
-    }
-
-    /**
-     * Funcion generada para insertar en un ConcurrentHashMap los valores de las actividades extracurriculares
-     */
-    private ConcurrentHashMap<String, Pair> insertExtraCurriculares() {
-        try {
-            String extra = this.p_operativo.getExtraCurriculares();
-            String[] firstSplit = extra.split(",");
-            for (String extraCurricular : firstSplit) {
-                Pair<String, String> pairTuple = new Pair<>(extraCurricular.split(".")[1].split("-")[0], extraCurricular.split(".")[1].split("-")[1]);
-                extraCurriculares.put(extraCurricular.split(".")[0], pairTuple);
-            }
-            return extraCurriculares;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
-        }
     }
 
     /**
@@ -66,7 +47,7 @@ public class LearningIA {
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
     public String TipoEstudio() {
-        int until_days = (int) LocalDate.parse(p_operativo.getFechaActividad()).until(LocalDate.now(), ChronoUnit.DAYS);
+        int until_days = 3;
         if (until_days >= 3) {
             return "REFUERZO SENCILLO";
         } else if (until_days == 2) {

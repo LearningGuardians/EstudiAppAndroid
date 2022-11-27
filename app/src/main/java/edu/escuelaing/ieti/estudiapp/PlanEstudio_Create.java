@@ -1,8 +1,10 @@
 package edu.escuelaing.ieti.estudiapp;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.TimePickerDialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +14,10 @@ import android.widget.TimePicker;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 
+import java.time.LocalTime;
 import java.util.Locale;
+
+import edu.escuelaing.ieti.estudiapp.entities.PlanOperativo;
 
 public class PlanEstudio_Create extends AppCompatActivity {
 
@@ -23,7 +28,7 @@ public class PlanEstudio_Create extends AppCompatActivity {
     int hourArrive,minuteArrive;
     int hourStart, minuteStart;
     MaterialCardView spanishCardView,mathCardView,englishCardView;
-    String cardSelectd,studyPlanName,reasonSelected;
+    String cardSelectd,reasonSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +40,6 @@ public class PlanEstudio_Create extends AppCompatActivity {
 
         //Traer el nombre del plan de estudio
         studyPlan = findViewById(R.id.idPlanEstudio);
-        studyPlanName = studyPlan.getText().toString();
 
         //Cards new listener
         //Adicion al listener: se hace que se guarde en una variable global cual carta escogio
@@ -48,7 +52,7 @@ public class PlanEstudio_Create extends AppCompatActivity {
         spanishCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardSelectd = "Spanish";
+                cardSelectd = "espanol";
                 spanishCardView.setChecked(!spanishCardView.isChecked());
                 mathCardView.setChecked(false);
                 englishCardView.setChecked(false);
@@ -59,7 +63,7 @@ public class PlanEstudio_Create extends AppCompatActivity {
         mathCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardSelectd = "math";
+                cardSelectd = "matematicas";
                 mathCardView.setChecked(!mathCardView.isChecked());
                 spanishCardView.setChecked(false);
                 englishCardView.setChecked(false);
@@ -70,7 +74,7 @@ public class PlanEstudio_Create extends AppCompatActivity {
         englishCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardSelectd = "english";
+                cardSelectd = "ingles";
                 englishCardView.setChecked(!englishCardView.isChecked());
                 spanishCardView.setChecked(false);
                 mathCardView.setChecked(false);
@@ -154,6 +158,27 @@ public class PlanEstudio_Create extends AppCompatActivity {
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, timeSetListener, hourStart, minuteStart, true);
         timePickerDialog.setTitle("Seleccionar Hora");
         timePickerDialog.show();
+    }
+
+    /**
+     * Funcion generada para crear el plan de estudio de acuerdo con las variables que da el usuario
+     * Tambien se le pide a la inteligencia artificial que haga la particion de estudios
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void createStudyPlan(View view){
+        //Create Study plan
+        PlanOperativo newStudyPlan = new PlanOperativo(cardSelectd,
+                LocalTime.of(hourArrive,minuteArrive).toString(),
+                studyPlan.getText().toString(),LocalTime.of(hourStart,minuteStart).toString(),
+                reasonSelected);
+        /**
+        System.out.println(cardSelectd);
+        System.out.println(LocalTime.of(hourArrive,minuteArrive).toString());
+        System.out.println(studyPlan.getText().toString());
+        System.out.println(LocalTime.of(hourStart,minuteStart).toString());
+        System.out.println(reasonSelected);
+         */
+
     }
 
 }

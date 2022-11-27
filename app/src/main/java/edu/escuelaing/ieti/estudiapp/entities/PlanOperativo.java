@@ -1,28 +1,47 @@
 package edu.escuelaing.ieti.estudiapp.entities;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.time.LocalDate;
 
 import edu.escuelaing.ieti.estudiapp.dtos.PlanOperativoDto;
 
 public class PlanOperativo {
     private String id;
-    private String nombreEstudiante;
     private String Materia;
-    private String Tematica;
-    private String fechaDeCreacion;
+    private String horaLlegada;
+    private String nombrePlan;
+    private String horaComienzo;
     private String razon;
-    private String porcentaje;
-
-    private String SalidaColegio;
-    private String fechaActividad;
-
-    private String extraCurriculares;
+    private String fechaDeCreacion;
     /**
      * Constructor vacio, en caso que se quiera crear con los datos basicos
      * entonces se le deja un identificador y la fecha de creacion
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public PlanOperativo(){
         this.id = String.valueOf(Math.floor(Math.random()*10+1));
+        this.fechaDeCreacion = LocalDate.now().toString();
+    }
+
+    /**
+     * Constructor donde el usuario da todos los parametros del plan operativo
+     * @param materia
+     * @param hora1
+     * @param nombrePlan
+     * @param hora2
+     * @param razon
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public PlanOperativo(String materia, String hora1, String nombrePlan, String hora2, String razon){
+        this.id = String.valueOf(Math.floor(Math.random()*10+1));
+        this.Materia = materia;
+        this.horaLlegada = hora1;
+        this.nombrePlan = nombrePlan;
+        this.horaComienzo = hora2;
+        this.razon = razon;
         this.fechaDeCreacion = LocalDate.now().toString();
     }
 
@@ -31,12 +50,9 @@ public class PlanOperativo {
      */
     public PlanOperativo(PlanOperativoDto operativoDto){
         this.id = operativoDto.getId();
-        this.nombreEstudiante = operativoDto.getNombreEstudiante();
         this.Materia=operativoDto.getMateria();
-        this.Tematica = operativoDto.getTematica();
         this.fechaDeCreacion = operativoDto.getFecha();
         this.razon = operativoDto.getRazon();
-        this.porcentaje = operativoDto.getPorcentaje();
     }
 
     public String getMateria() {
@@ -45,23 +61,11 @@ public class PlanOperativo {
     public void setMateria(String materia) {
         Materia = materia;
     }
-    public String getTematica() {
-        return Tematica;
-    }
-    public void setTematica(String tematica) {
-        Tematica = tematica;
-    }
     public String getFecha() {
         return fechaDeCreacion;
     }
     public void setFecha(String fecha) {
         this.fechaDeCreacion = fecha;
-    }
-    public String getPorcentaje() {
-        return porcentaje;
-    }
-    public void setPorcentaje(String porcentaje) {
-        this.porcentaje = porcentaje;
     }
     public String getId() {
         return id;
@@ -70,15 +74,6 @@ public class PlanOperativo {
     public void setId(String id) {
         this.id = id;
     }
-
-    public String getNombreEstudiante() {
-        return nombreEstudiante;
-    }
-
-    public void setNombreEstudiante(String nombreEstudiante) {
-        this.nombreEstudiante = nombreEstudiante;
-    }
-
     public String getRazon() {
         return razon;
     }
@@ -95,28 +90,28 @@ public class PlanOperativo {
         this.fechaDeCreacion = fechaDeCreacion;
     }
 
-    public String getSalidaColegio() {
-        return SalidaColegio;
+    public String getHoraLlegada() {
+        return horaLlegada;
     }
 
-    public void setSalidaColegio(String salidaColegio) {
-        SalidaColegio = salidaColegio;
+    public void setHoraLlegada(String horaLlegada) {
+        this.horaLlegada = horaLlegada;
     }
 
-    public String getFechaActividad() {
-        return fechaActividad;
+    public String getNombrePlan() {
+        return nombrePlan;
     }
 
-    public void setFechaActividad(String fechaActividad) {
-        this.fechaActividad = fechaActividad;
+    public void setNombrePlan(String nombrePlan) {
+        this.nombrePlan = nombrePlan;
     }
 
-    public String getExtraCurriculares() {
-        return extraCurriculares;
+    public String getHoraComienzo() {
+        return horaComienzo;
     }
 
-    public void setExtraCurriculares(String extraCurriculares) {
-        this.extraCurriculares = extraCurriculares;
+    public void setHoraComienzo(String horaComienzo) {
+        this.horaComienzo = horaComienzo;
     }
 }
 
