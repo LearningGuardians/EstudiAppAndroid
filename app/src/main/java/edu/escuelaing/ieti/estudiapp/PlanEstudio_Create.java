@@ -64,7 +64,7 @@ public class PlanEstudio_Create extends AppCompatActivity {
 
 
     /**
-     * Funcion genereada para escuchar la hora que escogio el estudiante en la cual va a llegar a la casa.
+     * Funcion genereada para escuchar hora que escogio el estudiante en la cual va a llegar a la casa.
      * @param view
      */
     public void timePick(View view) {
