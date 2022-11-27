@@ -13,12 +13,21 @@ import android.widget.TimePicker;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.time.LocalTime;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import edu.escuelaing.ieti.estudiapp.entities.PlanOperativo;
 import edu.escuelaing.ieti.estudiapp.ia.LearningIA;
+import edu.escuelaing.ieti.estudiapp.services.PlanOperativoService;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PlanEstudio_Create extends AppCompatActivity {
 
@@ -166,7 +175,7 @@ public class PlanEstudio_Create extends AppCompatActivity {
      * Tambien se le pide a la inteligencia artificial que haga la particion de estudios
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void createStudyPlan(View view){
+    public PlanOperativo createStudyPlan(View view){
         //Create Study plan
         PlanOperativo newStudyPlan = new PlanOperativo(cardSelectd,
                 LocalTime.of(hourArrive,minuteArrive).toString(),
@@ -179,9 +188,30 @@ public class PlanEstudio_Create extends AppCompatActivity {
         System.out.println(LocalTime.of(hourStart,minuteStart).toString());
         System.out.println(reasonSelected);
          */
+        Gson gson = new GsonBuilder().setDateFormat( "yyyy-MM-dd'T'HH:mm:ss" ).create();
+
+        Retrofit builder = new Retrofit.Builder()
+                .baseUrl("http://localhost:8080/")
+                .addConverterFactory( GsonConverterFactory.create())
+                .build();
+
+        PlanOperativoService pOperativoService = builder.create(PlanOperativoService.class);
+
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(); loggingInterceptor.setLevel( HttpLoggingInterceptor.Level.BODY );
+
+        /**OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .addInterceptor( loggingInterceptor )
+                .addInterceptor(new AuthInterceptor(storage))
+                .writeTimeout( 0, TimeUnit.MILLISECONDS )
+                .readTimeout( 2, TimeUnit.MINUTES )
+                .connectTimeout( 1, TimeUnit.MINUTES ).build();*/
         LearningIA ia = new LearningIA(newStudyPlan);
         ia.start();
+        //Call<PlanOperativo> pOperativo = pOperativoService.createPOperativo()
+        return null;
+
 
     }
+
 
 }

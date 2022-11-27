@@ -16,6 +16,7 @@ public class PlanOperativo {
     private String horaComienzo;
     private String razon;
     private String fechaDeCreacion;
+    
     /**
      * Constructor vacio, en caso que se quiera crear con los datos basicos
      * entonces se le deja un identificador y la fecha de creacion
