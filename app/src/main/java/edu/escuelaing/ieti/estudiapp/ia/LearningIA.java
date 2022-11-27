@@ -26,7 +26,6 @@ public class LearningIA {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public LearningIA(PlanOperativo planOperativo) {
         this.p_operativo = planOperativo;
-        start();
     }
 
     /**
@@ -35,45 +34,25 @@ public class LearningIA {
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void start() {
-        reparticionEstudio(TipoEstudio());
-    }
-
-    /**
-     * Funcion creada para revisar que tipo de estudio se le debe poner al estudiante de acuerdo a la fecha en que este
-     * estipulada la actividad. Este caso no debe aplicar para cuando es una semana normal, osea que no tiene actividades
-     * como quiz o parcial por presentar.
-     *
-     * @return
-     */
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public String TipoEstudio() {
-        int until_days = 3;
-        if (until_days >= 3) {
-            return "REFUERZO SENCILLO";
-        } else if (until_days == 2) {
-            return "REFUERZO MEDIANO";
-        } else if (until_days == 1) {
-            return "REFUERZO EXTENSO";
-        }
-        return null;
+        reparticionEstudio();
     }
 
     /**
      * Funcion generada para retornar el ConcurrentHashMap con la particion de horas del dia, esto de
      * acuerdo con que tipo de estudio se le escogio al estudiante
      *
-     * @param tipo
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void reparticionEstudio(String tipo) {
-        switch (tipo) {
-            case "REFUERZO SENCILLO":
+    public void reparticionEstudio() {
+        System.out.println("ENTRA A REPARTICION");
+        switch ("") {
+            case "Refuerzo":
                 this.particionEstudio = particion(15, 40, LocalTime.of(8, 0));
                 break;
-            case "REFUERZO MEDIANO":
+            case "Quiz":
                 this.particionEstudio = particion(20, 30, LocalTime.of(9, 30));
                 break;
-            case "REFUERZO EXTENSO":
+            case "Evaluacion":
                 this.particionEstudio = particion(35, 20, LocalTime.of(11, 20));
                 break;
 

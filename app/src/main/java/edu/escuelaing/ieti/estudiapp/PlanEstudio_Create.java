@@ -18,6 +18,7 @@ import java.time.LocalTime;
 import java.util.Locale;
 
 import edu.escuelaing.ieti.estudiapp.entities.PlanOperativo;
+import edu.escuelaing.ieti.estudiapp.ia.LearningIA;
 
 public class PlanEstudio_Create extends AppCompatActivity {
 
@@ -178,6 +179,8 @@ public class PlanEstudio_Create extends AppCompatActivity {
         System.out.println(LocalTime.of(hourStart,minuteStart).toString());
         System.out.println(reasonSelected);
          */
+        LearningIA ia = new LearningIA(newStudyPlan);
+        ia.start();
 
     }
 
