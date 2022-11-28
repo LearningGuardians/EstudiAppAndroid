@@ -3,13 +3,19 @@ package edu.escuelaing.ieti.estudiapp;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
@@ -33,7 +39,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class PlanEstudio_Create extends AppCompatActivity {
 
     //Variables globales,
-    Button timeButton, secondTimeButton;
+    Button timeButton, secondTimeButton, startButton;
     MaterialButton refuerzoButton,evaluacionButton,quizButton;
     EditText studyPlan;
     int hourArrive,minuteArrive;
@@ -41,6 +47,7 @@ public class PlanEstudio_Create extends AppCompatActivity {
     MaterialCardView spanishCardView,mathCardView,englishCardView;
     String cardSelectd,reasonSelected;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,12 +61,12 @@ public class PlanEstudio_Create extends AppCompatActivity {
 
         //Cards new listener
         //Adicion al listener: se hace que se guarde en una variable global cual carta escogio
-         spanishCardView = findViewById(R.id.spanishCard);
-         mathCardView = findViewById(R.id.matematicasCard);
-         englishCardView = findViewById(R.id.inglesCard);
+        spanishCardView = findViewById(R.id.spanishCard);
+        mathCardView = findViewById(R.id.matematicasCard);
+        englishCardView = findViewById(R.id.inglesCard);
 
 
-         //change listener spanish card
+        //change listener spanish card
         spanishCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,10 +135,7 @@ public class PlanEstudio_Create extends AppCompatActivity {
                 evaluacionButton.setChecked(false);
             }
         });
-
-
     }
-
 
     /**
      * Funcion genereada para escuchar la hora que escogio el estudiante en la cual va a llegar a la casa.
@@ -176,36 +180,37 @@ public class PlanEstudio_Create extends AppCompatActivity {
      * Tambien se le pide a la inteligencia artificial que haga la particion de estudios
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public PlanOperativo createStudyPlan(View view){
+    public PlanOperativo createStudyPlan(View view) {
         //Create Study plan
         PlanOperativo newStudyPlan = new PlanOperativo(cardSelectd,
-                LocalTime.of(hourArrive,minuteArrive).toString(),
-                studyPlan.getText().toString(),LocalTime.of(hourStart,minuteStart).toString(),
+                LocalTime.of(hourArrive, minuteArrive).toString(),
+                studyPlan.getText().toString(), LocalTime.of(hourStart, minuteStart).toString(),
                 reasonSelected);
-        /**
+        /*
         System.out.println(cardSelectd);
         System.out.println(LocalTime.of(hourArrive,minuteArrive).toString());
         System.out.println(studyPlan.getText().toString());
         System.out.println(LocalTime.of(hourStart,minuteStart).toString());
         System.out.println(reasonSelected);
          */
-        Gson gson = new GsonBuilder().setDateFormat( "yyyy-MM-dd'T'HH:mm:ss" ).create();
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
 
         Retrofit builder = new Retrofit.Builder()
                 .baseUrl("http://localhost:8080/")
-                .addConverterFactory( GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         PlanOperativoService pOperativoService = builder.create(PlanOperativoService.class);
 
-        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(); loggingInterceptor.setLevel( HttpLoggingInterceptor.Level.BODY );
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         /**OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .addInterceptor( loggingInterceptor )
-                .addInterceptor(new AuthInterceptor(storage))
-                .writeTimeout( 0, TimeUnit.MILLISECONDS )
-                .readTimeout( 2, TimeUnit.MINUTES )
-                .connectTimeout( 1, TimeUnit.MINUTES ).build();*/
+         .addInterceptor( loggingInterceptor )
+         .addInterceptor(new AuthInterceptor(storage))
+         .writeTimeout( 0, TimeUnit.MILLISECONDS )
+         .readTimeout( 2, TimeUnit.MINUTES )
+         .connectTimeout( 1, TimeUnit.MINUTES ).build();*/
         LearningIA ia = new LearningIA(newStudyPlan);
         Call<PlanOperativoDto> pOperativo = pOperativoService.createPOperativo(new PlanOperativoDto(newStudyPlan));
         System.out.println(pOperativo);
@@ -214,6 +219,4 @@ public class PlanEstudio_Create extends AppCompatActivity {
 
 
     }
-
-
 }
