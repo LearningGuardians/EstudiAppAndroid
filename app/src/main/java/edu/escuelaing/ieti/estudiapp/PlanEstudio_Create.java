@@ -3,13 +3,19 @@ package edu.escuelaing.ieti.estudiapp;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
@@ -23,7 +29,7 @@ import edu.escuelaing.ieti.estudiapp.ia.LearningIA;
 public class PlanEstudio_Create extends AppCompatActivity {
 
     //Variables globales,
-    Button timeButton, secondTimeButton;
+    Button timeButton, secondTimeButton, startButton;
     MaterialButton refuerzoButton,evaluacionButton,quizButton;
     EditText studyPlan;
     int hourArrive,minuteArrive;
@@ -31,6 +37,7 @@ public class PlanEstudio_Create extends AppCompatActivity {
     MaterialCardView spanishCardView,mathCardView,englishCardView;
     String cardSelectd,reasonSelected;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +51,12 @@ public class PlanEstudio_Create extends AppCompatActivity {
 
         //Cards new listener
         //Adicion al listener: se hace que se guarde en una variable global cual carta escogio
-         spanishCardView = findViewById(R.id.spanishCard);
-         mathCardView = findViewById(R.id.matematicasCard);
-         englishCardView = findViewById(R.id.inglesCard);
+        spanishCardView = findViewById(R.id.spanishCard);
+        mathCardView = findViewById(R.id.matematicasCard);
+        englishCardView = findViewById(R.id.inglesCard);
 
 
-         //change listener spanish card
+        //change listener spanish card
         spanishCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,10 +125,7 @@ public class PlanEstudio_Create extends AppCompatActivity {
                 evaluacionButton.setChecked(false);
             }
         });
-
-
     }
-
 
     /**
      * Funcion genereada para escuchar la hora que escogio el estudiante en la cual va a llegar a la casa.
@@ -172,16 +176,14 @@ public class PlanEstudio_Create extends AppCompatActivity {
                 LocalTime.of(hourArrive,minuteArrive).toString(),
                 studyPlan.getText().toString(),LocalTime.of(hourStart,minuteStart).toString(),
                 reasonSelected);
-        /**
+
         System.out.println(cardSelectd);
         System.out.println(LocalTime.of(hourArrive,minuteArrive).toString());
         System.out.println(studyPlan.getText().toString());
         System.out.println(LocalTime.of(hourStart,minuteStart).toString());
         System.out.println(reasonSelected);
-         */
+
         LearningIA ia = new LearningIA(newStudyPlan);
         ia.start();
-
     }
-
 }
