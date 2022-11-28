@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
@@ -33,6 +34,8 @@ import edu.escuelaing.ieti.estudiapp.services.PlanOperativoService;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -196,7 +199,7 @@ public class PlanEstudio_Create extends AppCompatActivity {
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
 
         Retrofit builder = new Retrofit.Builder()
-                .baseUrl("http://localhost:8080/")
+                .baseUrl("http://192.168.1.11:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -212,8 +215,21 @@ public class PlanEstudio_Create extends AppCompatActivity {
          .readTimeout( 2, TimeUnit.MINUTES )
          .connectTimeout( 1, TimeUnit.MINUTES ).build();*/
         LearningIA ia = new LearningIA(newStudyPlan);
-        Call<PlanOperativoDto> pOperativo = pOperativoService.createPOperativo(new PlanOperativoDto(newStudyPlan));
-        System.out.println(pOperativo);
+        Call<List<PlanOperativoDto>> call = pOperativoService.getAll();
+        call.enqueue(new Callback<List<PlanOperativoDto>>() {
+            @Override
+            public void onResponse(Call<List<PlanOperativoDto>> call, Response<List<PlanOperativoDto>> response) {
+                for(PlanOperativoDto po: response.body()){
+                    System.out.println("POperativo:-----" + po.toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<PlanOperativoDto>> call, Throwable t) {
+                System.out.println("Se encontro un error");
+                t.printStackTrace();
+            }
+        });
         ia.start();
         return null;
 
