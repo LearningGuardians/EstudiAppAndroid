@@ -1,10 +1,12 @@
 package edu.escuelaing.ieti.estudiapp.dtos;
 
+import edu.escuelaing.ieti.estudiapp.entities.PlanOperativo;
+
 public class PlanOperativoDto {
 
     private String id;
 
-    private String NombreEstudiante;
+/*    private String NombreEstudiante;*/
     private String Materia;
     private String Tematica;
     private String fecha;
@@ -14,9 +16,17 @@ public class PlanOperativoDto {
 
     public PlanOperativoDto(){}
 
+    public PlanOperativoDto(PlanOperativo pOperativo){
+        this.id = pOperativo.getId();
+//        this.NombreEstudiante = estudiante;
+        this.Materia= pOperativo.getMateria();
+        this.fecha = pOperativo.getFecha();
+        this.razon = pOperativo.getRazon();
+    }
+
     public PlanOperativoDto(String id, String estudiante, String materia, String tematica, String Date, String razon, String porcentaje){
         this.id = id;
-        this.NombreEstudiante = estudiante;
+//        this.NombreEstudiante = estudiante;
         this.Materia=materia;
         this.Tematica = tematica;
         this.fecha = Date;
@@ -57,6 +67,7 @@ public class PlanOperativoDto {
         this.id = id;
     }
 
+/*
     public String getNombreEstudiante() {
         return NombreEstudiante;
     }
@@ -64,6 +75,7 @@ public class PlanOperativoDto {
     public void setNombreEstudiante(String nombreEstudiante) {
         NombreEstudiante = nombreEstudiante;
     }
+*/
 
     public String getRazon() {
         return razon;

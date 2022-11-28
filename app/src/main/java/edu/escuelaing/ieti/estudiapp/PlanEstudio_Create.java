@@ -20,6 +20,7 @@ import java.time.LocalTime;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import edu.escuelaing.ieti.estudiapp.dtos.PlanOperativoDto;
 import edu.escuelaing.ieti.estudiapp.entities.PlanOperativo;
 import edu.escuelaing.ieti.estudiapp.ia.LearningIA;
 import edu.escuelaing.ieti.estudiapp.services.PlanOperativoService;
@@ -206,8 +207,9 @@ public class PlanEstudio_Create extends AppCompatActivity {
                 .readTimeout( 2, TimeUnit.MINUTES )
                 .connectTimeout( 1, TimeUnit.MINUTES ).build();*/
         LearningIA ia = new LearningIA(newStudyPlan);
+        Call<PlanOperativoDto> pOperativo = pOperativoService.createPOperativo(new PlanOperativoDto(newStudyPlan));
+        System.out.println(pOperativo);
         ia.start();
-        //Call<PlanOperativo> pOperativo = pOperativoService.createPOperativo()
         return null;
 
 
