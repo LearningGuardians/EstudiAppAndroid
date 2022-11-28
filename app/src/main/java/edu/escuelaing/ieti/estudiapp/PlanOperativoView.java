@@ -26,6 +26,7 @@ public class PlanOperativoView extends AppCompatActivity {
      */
     private void nextPage(){
         Button nextButton = (Button) findViewById(R.id.PlanEstudioButton);
+        System.out.println("Button " + nextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -48,8 +48,7 @@ public class start_activity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //startActivity(new Intent(creacion_plan_exitoso.this,PlanEstudio_Create.class));
-                System.out.println("EN PROGRESO...");
+                startActivity(new Intent(start_activity.this,newHour.class));
             }
         });
     }
