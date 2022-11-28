@@ -54,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <TextView
-        android:id="@+id/nombreTextView"
+        android:id="@+id/nombreTextStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="122dp"
@@ -66,7 +66,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <TextView
-        android:id="@+id/materiaTextView"
+        android:id="@+id/materiaTextStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="122dp"
@@ -75,10 +75,10 @@
         android:text="Materia: "
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombreTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/nombreTextStart" />
 
     <TextView
-        android:id="@+id/razonTextView"
+        android:id="@+id/horaTextStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="122dp"
@@ -87,7 +87,7 @@
         android:text="Hora de Comienzo: "
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materiaTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/materiaTextStart" />
 
     <Button
         android:id="@+id/button"
