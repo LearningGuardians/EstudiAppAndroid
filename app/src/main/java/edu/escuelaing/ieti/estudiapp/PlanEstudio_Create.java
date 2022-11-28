@@ -19,12 +19,26 @@ import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
+import edu.escuelaing.ieti.estudiapp.dtos.PlanOperativoDto;
 import edu.escuelaing.ieti.estudiapp.entities.PlanOperativo;
 import edu.escuelaing.ieti.estudiapp.ia.LearningIA;
+import edu.escuelaing.ieti.estudiapp.services.PlanOperativoLocal;
+import edu.escuelaing.ieti.estudiapp.services.PlanOperativoService;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PlanEstudio_Create extends AppCompatActivity {
 
@@ -36,6 +50,9 @@ public class PlanEstudio_Create extends AppCompatActivity {
     int hourStart, minuteStart;
     MaterialCardView spanishCardView,mathCardView,englishCardView;
     String cardSelectd,reasonSelected;
+
+    //
+    PlanOperativoLocal pO;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -170,20 +187,59 @@ public class PlanEstudio_Create extends AppCompatActivity {
      * Tambien se le pide a la inteligencia artificial que haga la particion de estudios
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void createStudyPlan(View view){
+    public PlanOperativo createStudyPlan(View view) {
         //Create Study plan
         PlanOperativo newStudyPlan = new PlanOperativo(cardSelectd,
-                LocalTime.of(hourArrive,minuteArrive).toString(),
-                studyPlan.getText().toString(),LocalTime.of(hourStart,minuteStart).toString(),
+                LocalTime.of(hourArrive, minuteArrive).toString(),
+                studyPlan.getText().toString(), LocalTime.of(hourStart, minuteStart).toString(),
                 reasonSelected);
-
+        /*
         System.out.println(cardSelectd);
         System.out.println(LocalTime.of(hourArrive,minuteArrive).toString());
         System.out.println(studyPlan.getText().toString());
         System.out.println(LocalTime.of(hourStart,minuteStart).toString());
         System.out.println(reasonSelected);
+         */
+/*        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
 
+        Retrofit builder = new Retrofit.Builder()
+                .baseUrl("http://192.168.1.11:8080/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        PlanOperativoService pOperativoService = builder.create(PlanOperativoService.class);
+
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);*/
+
+
+
+        /**OkHttpClient okHttpClient = new OkHttpClient.Builder()
+         .addInterceptor( loggingInterceptor )
+         .addInterceptor(new AuthInterceptor(storage))
+         .writeTimeout( 0, TimeUnit.MILLISECONDS )
+         .readTimeout( 2, TimeUnit.MINUTES )
+         .connectTimeout( 1, TimeUnit.MINUTES ).build();*/
         LearningIA ia = new LearningIA(newStudyPlan);
+        /*Call<List<PlanOperativoDto>> call = pOperativoService.getAll();
+        call.enqueue(new Callback<List<PlanOperativoDto>>() {
+            @Override
+            public void onResponse(Call<List<PlanOperativoDto>> call, Response<List<PlanOperativoDto>> response) {
+                for(PlanOperativoDto po: response.body()){
+                    System.out.println("POperativo:-----" + po.toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<PlanOperativoDto>> call, Throwable t) {
+                System.out.println("Se encontro un error");
+                t.printStackTrace();
+            }
+        });*/
+        PlanOperativoLocal.create(newStudyPlan);
+        PlanOperativoLocal.getAll().forEach(planOperativo -> {
+            System.out.println("PlanOperativo__" + planOperativo.getNombrePlan());
+        });
         ia.start();
         Intent intent = new Intent(getApplicationContext(),creacion_plan_exitoso.class);
         intent.putExtra("name_key",studyPlan.getText().toString());

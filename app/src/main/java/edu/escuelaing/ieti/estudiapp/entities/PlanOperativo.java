@@ -16,6 +16,7 @@ public class PlanOperativo {
     private String horaComienzo;
     private String razon;
     private String fechaDeCreacion;
+    
     /**
      * Constructor vacio, en caso que se quiera crear con los datos basicos
      * entonces se le deja un identificador y la fecha de creacion
@@ -48,6 +49,7 @@ public class PlanOperativo {
     /**
      * Constructor generado para la creacion de planes operativos, donde el usuario da todos los parametros
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public PlanOperativo(PlanOperativoDto operativoDto){
         this.id = operativoDto.getId();
         this.Materia=operativoDto.getMateria();

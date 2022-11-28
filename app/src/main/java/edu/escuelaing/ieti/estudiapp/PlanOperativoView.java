@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class PlanOperativo extends AppCompatActivity {
+public class PlanOperativoView extends AppCompatActivity {
 
     /**
      * Funcion main de la actividad PlanOperativo.
@@ -29,7 +29,7 @@ public class PlanOperativo extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(PlanOperativo.this,PlanEstudio_Create.class));
+                startActivity(new Intent(PlanOperativoView.this,PlanEstudio_Create.class));
             }
         });
     }
