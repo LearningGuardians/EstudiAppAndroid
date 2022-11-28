@@ -33,6 +33,7 @@ public class creacion_plan_exitoso extends AppCompatActivity {
         materiaText.setText("Materia: "+intent.getStringExtra("materia_key"));
         saveDataStudyPlan.put("topic",intent.getStringExtra("materia_key"));
         razonText.setText("Razón: "+intent.getStringExtra("razon_key"));
+        saveDataStudyPlan.put("reason",intent.getStringExtra("razon_key"));
         horaText.setText("Hora de Comienzo: "+intent.getStringExtra("hora_key"));
         saveDataStudyPlan.put("hour",intent.getStringExtra("hora_key"));
         backToCreate();
@@ -48,12 +49,16 @@ public class creacion_plan_exitoso extends AppCompatActivity {
     }
 
 
-
+    /**
+     * Funcion generada para enviar los datos del plan operativo hacia la actividad de comienzo de plan de estudio
+     * @param view
+     */
     public void sendDataPE(View view){
         Intent intent = new Intent(getApplicationContext(),start_activity.class);
         intent.putExtra("name_key2",saveDataStudyPlan.get("name"));
         intent.putExtra("materia_key2",saveDataStudyPlan.get("topic"));
         intent.putExtra("hora_key2",saveDataStudyPlan.get("hour"));
+        intent.putExtra("razon_key2",saveDataStudyPlan.get("reason"));
         startActivity(intent);
     }
 }

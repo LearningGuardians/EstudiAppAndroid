@@ -90,7 +90,7 @@
         app:layout_constraintTop_toBottomOf="@+id/materiaTextStart" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/nowButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
@@ -101,7 +101,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
     <Button
-        android:id="@+id/buttonBackID"
+        android:id="@+id/laterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"

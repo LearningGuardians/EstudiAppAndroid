@@ -81,13 +81,16 @@ public class LearningIA {
     public ConcurrentHashMap particion(int tiempoEstudio, int descanso, LocalTime horaMaxima) {
         ConcurrentHashMap<String, Pair> particionFinal = new ConcurrentHashMap<>();
         LocalTime horaInicio = LocalTime.parse(p_operativo.getHoraComienzo());
+        System.out.println(horaInicio);
         LocalTime horaFin = null;
         int var = 0;
-        while (!horaInicio.equals(horaMaxima)) {
+        while (horaMaxima.isAfter(horaInicio)) {
             //Insercion de particion en hashmap
             var += 1;
             //Suma a la hora de fin los minutos de estudio
             horaFin = horaInicio.plusMinutes(tiempoEstudio);
+            System.out.println("HORA INICIO ->"+horaInicio);
+            System.out.println("HORA FIN -> "+horaFin);
             particionFinal.put("Estudio_" + var, new Pair<>(horaInicio, horaFin));
             // se deja la nueva hora de inicio como la de fin mas un descanso, segun lo establecido por IA
             horaInicio = horaInicio.plusMinutes(descanso);

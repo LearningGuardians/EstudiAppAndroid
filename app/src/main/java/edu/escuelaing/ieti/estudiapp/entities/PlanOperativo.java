@@ -47,6 +47,23 @@ public class PlanOperativo {
     }
 
     /**
+     * Constructor de plan operativo donde no se necesita de una hora de llegada al colegio.
+     * @param materia
+     * @param hora1
+     * @param nombrePlan
+     * @param razon
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public PlanOperativo(String materia, String hora1, String nombrePlan, String razon){
+        this.id = String.valueOf(Math.floor(Math.random()*10+1));
+        this.Materia = materia;
+        this.nombrePlan = nombrePlan;
+        this.horaComienzo = hora1;
+        this.razon = razon;
+        this.fechaDeCreacion = LocalDate.now().toString();
+    }
+
+    /**
      * Constructor generado para la creacion de planes operativos, donde el usuario da todos los parametros
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
