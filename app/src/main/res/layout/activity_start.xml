@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".creacion_plan_exitoso">
+    tools:context=".start_activity">
 
     <ImageView
         android:id="@+id/imageView6"
@@ -14,16 +15,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/final_login" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="217dp"
-        android:layout_height="184dp"
-        android:layout_marginEnd="-310dp"
-        android:layout_marginBottom="-710dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView6"
-        app:layout_constraintEnd_toStartOf="@+id/imageView6"
-        app:srcCompat="@drawable/ic_correct" />
 
     <TextView
         android:id="@+id/textView2"
@@ -42,11 +33,11 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="400dp"
-        android:layout_marginEnd="150dp"
+        android:layout_marginTop="244dp"
+        android:layout_marginEnd="144dp"
         android:fontFamily="monospace"
-        android:text="Felicidades"
-        android:textSize="16sp"
+        android:text="Bienvenido"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,11 +45,11 @@
         android:id="@+id/textView10"
         android:layout_width="307dp"
         android:layout_height="46dp"
-        android:layout_marginStart="61dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="monospace"
-        android:text="Se ha creado correctamente el siguiente plan de estudio: "
-        android:textSize="16sp"
+        android:text="Este es el plan de estudio a realizar:"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -87,48 +78,41 @@
         app:layout_constraintTop_toBottomOf="@+id/nombreTextView" />
 
     <TextView
-        android:id="@+id/horaTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="monospace"
-        android:text="Hora de Comienzo: "
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/razonTextView" />
-
-    <TextView
         android:id="@+id/razonTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="122dp"
         android:layout_marginTop="20dp"
         android:fontFamily="monospace"
-        android:text="Razón: "
+        android:text="Hora de Comienzo: "
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materiaTextView" />
 
     <Button
-        android:id="@+id/menuPrincipalButton"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
-        android:text="MENU PRINCIPAL"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="68dp"
         android:backgroundTint="@android:color/holo_blue_light"
+        android:text="EMPEZAR YA"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horaTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
     <Button
         android:id="@+id/buttonBackID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="28dp"
-        android:text="CREAR OTRO PLAN"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="24dp"
         android:backgroundTint="@android:color/holo_blue_light"
+        android:text="MAS TARDE"
+        app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horaTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

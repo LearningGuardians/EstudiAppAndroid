@@ -27,6 +27,7 @@ public class creacion_plan_exitoso extends AppCompatActivity {
         razonText.setText("Razón: "+intent.getStringExtra("razon_key"));
         horaText.setText("Hora de Comienzo: "+intent.getStringExtra("hora_key"));
         backToCreate();
+        testStart();
     }
     private void backToCreate(){
         Button backButton = (Button) findViewById(R.id.buttonBackID);
@@ -34,6 +35,16 @@ public class creacion_plan_exitoso extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(creacion_plan_exitoso.this,PlanEstudio_Create.class));
+            }
+        });
+    }
+
+    private void testStart(){
+        Button testButton = (Button) findViewById(R.id.menuPrincipalButton);
+        testButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(creacion_plan_exitoso.this,start_activity.class));
             }
         });
     }
