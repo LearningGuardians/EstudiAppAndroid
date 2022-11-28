@@ -247,5 +247,6 @@ public class PlanEstudio_Create extends AppCompatActivity {
         intent.putExtra("razon_key",reasonSelected);
         intent.putExtra("hora_key",LocalTime.of(hourStart,minuteStart).toString());
         startActivity(intent);
+        return newStudyPlan;
     }
 }
