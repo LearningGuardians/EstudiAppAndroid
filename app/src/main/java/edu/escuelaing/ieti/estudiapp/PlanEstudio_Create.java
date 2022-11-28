@@ -185,5 +185,11 @@ public class PlanEstudio_Create extends AppCompatActivity {
 
         LearningIA ia = new LearningIA(newStudyPlan);
         ia.start();
+        Intent intent = new Intent(getApplicationContext(),creacion_plan_exitoso.class);
+        intent.putExtra("name_key",studyPlan.getText().toString());
+        intent.putExtra("materia_key",cardSelectd);
+        intent.putExtra("razon_key",reasonSelected);
+        intent.putExtra("hora_key",LocalTime.of(hourStart,minuteStart).toString());
+        startActivity(intent);
     }
 }
