@@ -49,6 +49,7 @@ public class PlanOperativo {
     /**
      * Constructor generado para la creacion de planes operativos, donde el usuario da todos los parametros
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public PlanOperativo(PlanOperativoDto operativoDto){
         this.id = operativoDto.getId();
         this.Materia=operativoDto.getMateria();

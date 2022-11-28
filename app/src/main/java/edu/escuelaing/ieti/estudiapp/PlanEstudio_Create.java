@@ -30,6 +30,7 @@ import java.util.concurrent.TimeUnit;
 import edu.escuelaing.ieti.estudiapp.dtos.PlanOperativoDto;
 import edu.escuelaing.ieti.estudiapp.entities.PlanOperativo;
 import edu.escuelaing.ieti.estudiapp.ia.LearningIA;
+import edu.escuelaing.ieti.estudiapp.services.PlanOperativoLocal;
 import edu.escuelaing.ieti.estudiapp.services.PlanOperativoService;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -49,6 +50,9 @@ public class PlanEstudio_Create extends AppCompatActivity {
     int hourStart, minuteStart;
     MaterialCardView spanishCardView,mathCardView,englishCardView;
     String cardSelectd,reasonSelected;
+
+    //
+    PlanOperativoLocal pO;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -196,7 +200,7 @@ public class PlanEstudio_Create extends AppCompatActivity {
         System.out.println(LocalTime.of(hourStart,minuteStart).toString());
         System.out.println(reasonSelected);
          */
-        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
+/*        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
 
         Retrofit builder = new Retrofit.Builder()
                 .baseUrl("http://192.168.1.11:8080/")
@@ -206,7 +210,9 @@ public class PlanEstudio_Create extends AppCompatActivity {
         PlanOperativoService pOperativoService = builder.create(PlanOperativoService.class);
 
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);*/
+
+
 
         /**OkHttpClient okHttpClient = new OkHttpClient.Builder()
          .addInterceptor( loggingInterceptor )
@@ -215,7 +221,7 @@ public class PlanEstudio_Create extends AppCompatActivity {
          .readTimeout( 2, TimeUnit.MINUTES )
          .connectTimeout( 1, TimeUnit.MINUTES ).build();*/
         LearningIA ia = new LearningIA(newStudyPlan);
-        Call<List<PlanOperativoDto>> call = pOperativoService.getAll();
+        /*Call<List<PlanOperativoDto>> call = pOperativoService.getAll();
         call.enqueue(new Callback<List<PlanOperativoDto>>() {
             @Override
             public void onResponse(Call<List<PlanOperativoDto>> call, Response<List<PlanOperativoDto>> response) {
@@ -229,6 +235,10 @@ public class PlanEstudio_Create extends AppCompatActivity {
                 System.out.println("Se encontro un error");
                 t.printStackTrace();
             }
+        });*/
+        PlanOperativoLocal.create(newStudyPlan);
+        PlanOperativoLocal.getAll().forEach(planOperativo -> {
+            System.out.println("PlanOperativo__" + planOperativo.getNombrePlan());
         });
         ia.start();
         return null;

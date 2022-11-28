@@ -2,7 +2,6 @@ package edu.escuelaing.ieti.estudiapp.services;
 
 import java.util.List;
 
-import edu.escuelaing.ieti.estudiapp.PlanOperativo;
 import edu.escuelaing.ieti.estudiapp.dtos.PlanOperativoDto;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -23,7 +22,7 @@ public interface PlanOperativoService {
     Call<PlanOperativoDto> createPOperativo(@Body PlanOperativoDto pOperativoDTO);
 
     @PUT("operativo/{id}")
-    Call<PlanOperativo> updatePOperativo(@Path("id") String id, @Body PlanOperativoDto pOperativoDTO);
+    Call<PlanOperativoDto> updatePOperativo(@Path("id") String id, @Body PlanOperativoDto pOperativoDTO);
 
     @DELETE("operativo/id")
     Call<Boolean> delete(@Path("id") String id);
