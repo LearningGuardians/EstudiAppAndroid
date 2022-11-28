@@ -17,13 +17,6 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31" >
         <activity
-            android:name=".start_activity"
-            android:exported="false" >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".creacion_plan_exitoso"
             android:exported="false" >
             <meta-data
@@ -39,16 +32,18 @@
         </activity>
         <activity
             android:name=".PlanOperativoView"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+         </activity>
+        <activity android:name=".MainActivity"
+            android:theme="@style/SplashTheme"
+            android:exported="true"> <!--Aquí llamamos nuestro tema -->
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
         </activity>
 
         <receiver android:name=".notifications.reminderNotification" />
