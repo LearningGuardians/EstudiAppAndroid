@@ -132,5 +132,10 @@ public class PlanOperativo {
     public void setHoraComienzo(String horaComienzo) {
         this.horaComienzo = horaComienzo;
     }
+
+    @Override
+    public String toString(){
+        return "pOperativo:{" + "id:"+id+", nombre:" + nombrePlan + ", HoraComienzo:" + horaComienzo+ "}";
+    }
 }
 

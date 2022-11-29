@@ -25,6 +25,18 @@ public class PlanOperativoLocal {
         return planesOperativos.get(id);
     }
 
+    public static PlanOperativo getByNombre(String nombre){
+        System.out.println("NOMBRE BUSCADO " + nombre);
+        for(PlanOperativo p: planesOperativos.values()){
+            System.out.println("NOMBRE " + p.getNombrePlan());
+            if(p.getNombrePlan().equals(nombre)){
+                System.out.println("SE ENCONTRO EL NOMBRE");
+                return p;
+            }
+        }
+        return null;
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static PlanOperativo create(PlanOperativo pOperativo){
         System.out.println("Creando Plan Operativo_______________-");
@@ -39,12 +51,12 @@ public class PlanOperativoLocal {
         System.out.println("Actualizando Plan Operativo_______________-");
         delete(id);
         planesOperativos.put(id,operativo);
-        System.out.println("Plan operativo Actualizado________" + operativo.getNombrePlan());
+        System.out.println("Plan operativo Actualizado________" + operativo.toString());
         return planesOperativos.get(id);
     }
 
     public static boolean  delete(String id){
         planesOperativos.remove(id);
-        return planesOperativos.get(id).equals(null);
+        return planesOperativos.get(id)== null;
     }
 }

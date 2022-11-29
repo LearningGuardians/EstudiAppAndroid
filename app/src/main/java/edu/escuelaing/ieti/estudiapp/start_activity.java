@@ -48,7 +48,11 @@ public class start_activity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(start_activity.this,newHour.class));
+                Intent intent = new Intent(getApplicationContext(),newHour.class);
+                System.out.println("NOMBRE PLAN DE ESTUDIO " + saveDataStart.get("nombre"));
+                intent.putExtra("pOperativo_Name", saveDataStart.get("nombre"));
+                startActivity(intent);
+
             }
         });
     }
