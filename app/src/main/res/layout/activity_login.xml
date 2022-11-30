@@ -56,7 +56,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="64dp"
-        android:enabled="false"
         android:text="@string/action_sign_in_short"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,10 +81,10 @@
         android:id="@+id/imageView7"
         android:layout_width="435dp"
         android:layout_height="467dp"
+        android:contentDescription="TODO"
         app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/final_login"
-        android:contentDescription="TODO" />
+        app:srcCompat="@drawable/final_login" />
 
     <TextView
         android:id="@+id/textView2"
