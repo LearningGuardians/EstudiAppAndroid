@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.List;
 
 import edu.escuelaing.ieti.estudiapp.PlanEstudio_Create;
 import edu.escuelaing.ieti.estudiapp.R;
@@ -24,45 +24,51 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Login extends AppCompatActivity {
 
 
-    private ActivityLoginBinding binding;
+    EditText e1,e2;
+    TextView error;
+    String email, password;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityLoginBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        backToCreate();
+        setContentView(R.layout.activity_login);
+        e1 = findViewById(R.id.username);
+        e2 = findViewById(R.id.password);
+        //backToCreate();
+        error = findViewById(R.id.textView2);
+
     }
 
-    private void backToCreate(){
-        Button backButton = (Button) findViewById(R.id.login);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Login.this, PlanEstudio_Create.class));
-            }
-        });
-    }
 
-    private void getUsers(){
+
+    public void checkUser(View view) {
+
+        email = e1.getText().toString();
+        password = e2.getText().toString();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http:/localhost:8080/")//En esta linea se indica la URL
+                .baseUrl("http://ec2-44-202-136-239.compute-1.amazonaws.com:8080")  //En esta linea se indica la URL
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         UserApi userApi = retrofit.create(UserApi.class);
-        Call<List<User>> users = userApi.getUsers();
-        users.enqueue(new Callback<List<User>>() {
+        User user = new User(email,password);
+        Call<User> call = userApi.verifyEmail(user);
+        call.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                //backToCreate
+            public void onResponse(Call<User> call, Response<User> response) {
+                CharSequence situacion = "usuario o contraseña erroneos ";
+
+                if (response.isSuccessful()){
+                    startActivity(new Intent(Login.this, PlanEstudio_Create.class));
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),situacion,Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
-            public void onFailure(Call<List<User>> call, Throwable t) {
-                CharSequence textoInvalido = "Correo o contraseña invalidos";
-                Toast.makeText(getApplicationContext(),textoInvalido,Toast.LENGTH_LONG).show();
+            public void onFailure(Call<User> call, Throwable t) {
+                System.out.println(t.getMessage());
             }
         });
     }
-
 }
