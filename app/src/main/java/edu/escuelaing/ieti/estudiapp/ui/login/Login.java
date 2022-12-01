@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import edu.escuelaing.ieti.estudiapp.Landing;
 import edu.escuelaing.ieti.estudiapp.PlanEstudio_Create;
 import edu.escuelaing.ieti.estudiapp.R;
 import edu.escuelaing.ieti.estudiapp.data.model.User;
@@ -57,7 +58,7 @@ public class Login extends AppCompatActivity {
                 CharSequence situacion = "usuario o contraseña erroneos ";
 
                 if (response.isSuccessful()){
-                    startActivity(new Intent(Login.this, PlanEstudio_Create.class));
+                    startActivity(new Intent(Login.this, Landing.class));
                 }
                 else{
                     Toast.makeText(getApplicationContext(),situacion,Toast.LENGTH_LONG).show();
