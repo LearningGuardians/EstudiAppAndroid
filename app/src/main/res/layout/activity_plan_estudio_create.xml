@@ -212,7 +212,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/idPlanEstudio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
@@ -259,7 +259,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+            app:layout_constraintTop_toBottomOf="@+id/idPlanEstudio" />
 
         <Button
             android:id="@+id/startTimeButton"
@@ -292,18 +292,7 @@
             app:layout_constraintTop_toBottomOf="@+id/startTimeButton" />
 
 
-        <Button
-            android:id="@+id/button7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginEnd="100dp"
-            android:backgroundTint="@android:color/holo_blue_light"
-            android:text="CREAR PLAN DE ESTUDIOS"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -319,13 +308,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4">
 
-            <Button
-                android:id="@+id/button4"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/refuerzoButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:backgroundTint="@android:color/holo_blue_light"
-                android:text="Refuerzo" />
+                android:checkable="true"
+                android:clickable="true"
+                android:text="Refuerzo"
+                app:strokeColor="@color/border_selector"
+                app:strokeWidth="2dp" />
+
 
             <View
                 android:id="@+id/divider4"
@@ -334,13 +328,16 @@
                 android:layout_weight="1"
                 android:background="@color/white" />
 
-            <Button
-                android:id="@+id/button3"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/evaluacionButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
+                android:checkable="true"
                 android:backgroundTint="@android:color/holo_blue_light"
-                android:text="Evaluación" />
+                android:text="Evaluación"
+                app:strokeColor="@color/border_selector"
+                app:strokeWidth="2dp"/>
 
             <View
                 android:id="@+id/divider5"
@@ -349,15 +346,33 @@
                 android:layout_weight="1"
                 android:background="@color/white" />
 
-            <Button
-                android:id="@+id/button2"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/quizButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="40dp"
+                android:checkable="true"
+                app:strokeColor="@color/border_selector"
+                app:strokeWidth="2dp"
                 android:backgroundTint="@android:color/holo_blue_light"
                 android:text="Quiz" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="100dp"
+            android:backgroundTint="@android:color/holo_blue_light"
+            android:text="CREAR PLAN DE ESTUDIOS"
+            android:onClick="createStudyPlan"
+            android:clickable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
