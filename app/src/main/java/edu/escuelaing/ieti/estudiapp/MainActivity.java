@@ -1,14 +1,16 @@
 package edu.escuelaing.ieti.estudiapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import androidx.annotation.Nullable;
+
+public class MainActivity extends Activity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.initial_page);
+        startActivity(new Intent(MainActivity.this,PlanOperativoView.class));
     }
 }
