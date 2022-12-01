@@ -210,16 +210,17 @@ public class PlanEstudio_Create extends AppCompatActivity {
         PlanOperativoService pOperativoService = builder.create(PlanOperativoService.class);
 
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);*/
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
 
 
-        /**OkHttpClient okHttpClient = new OkHttpClient.Builder()
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
          .addInterceptor( loggingInterceptor )
          .addInterceptor(new AuthInterceptor(storage))
          .writeTimeout( 0, TimeUnit.MILLISECONDS )
          .readTimeout( 2, TimeUnit.MINUTES )
          .connectTimeout( 1, TimeUnit.MINUTES ).build();*/
+
         LearningIA ia = new LearningIA(newStudyPlan);
         /*Call<List<PlanOperativoDto>> call = pOperativoService.getAll();
         call.enqueue(new Callback<List<PlanOperativoDto>>() {

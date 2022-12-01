@@ -12,6 +12,9 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface PlanOperativoService {
+
+    public static final String Token = "";
+
     @GET("operativo")
     Call<List<PlanOperativoDto>> getAll();
 
@@ -26,5 +29,6 @@ public interface PlanOperativoService {
 
     @DELETE("operativo/id")
     Call<Boolean> delete(@Path("id") String id);
+
 
 }

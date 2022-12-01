@@ -14,6 +14,8 @@ import edu.escuelaing.ieti.estudiapp.entities.PlanOperativo;
 
 public class PlanOperativoLocal {
 
+    public static final String URL_BASE = "";
+
     public static ConcurrentHashMap<String,PlanOperativo> planesOperativos = new ConcurrentHashMap<>();
 
 
