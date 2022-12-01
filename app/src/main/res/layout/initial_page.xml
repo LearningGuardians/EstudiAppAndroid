@@ -22,6 +22,9 @@
         android:layout_width="327dp"
         android:layout_height="97dp"
         android:text="Ir a Mis planes"
+        android:onclick="Intent i = new Intent(plan_operativo.xml);
+        startActivity(i);"
+        android:background="#01E8FF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,6 +34,7 @@
         android:id="@+id/button3"
         android:layout_width="147dp"
         android:layout_height="53dp"
+        android:background="#01E8FF"
         android:text="Crear plan de Estudio"
         tools:layout_editor_absoluteX="44dp"
         tools:layout_editor_absoluteY="498dp" />
@@ -40,6 +44,7 @@
         android:layout_width="147dp"
         android:layout_height="53dp"
         android:text="Extracurriculares"
+        android:background="#01E8FF"
         tools:layout_editor_absoluteX="223dp"
         tools:layout_editor_absoluteY="498dp" />
 
@@ -68,5 +73,14 @@
         app:srcCompat="@drawable/copyrightlogo"
         tools:layout_editor_absoluteX="141dp"
         tools:layout_editor_absoluteY="682dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="51dp"
+        android:layout_height="47dp"
+        android:src="@drawable/ic_user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="572dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
