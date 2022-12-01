@@ -45,7 +45,7 @@ public class Login extends AppCompatActivity {
         email = e1.getText().toString();
         password = e2.getText().toString();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://ec2-44-202-136-239.compute-1.amazonaws.com:8080")  //En esta linea se indica la URL
+                .baseUrl("http://ec2-3-88-28-9.compute-1.amazonaws.com:8080/")  //En esta linea se indica la URL
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         UserApi userApi = retrofit.create(UserApi.class);
