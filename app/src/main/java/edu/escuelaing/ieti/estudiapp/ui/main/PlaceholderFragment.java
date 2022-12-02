@@ -1,4 +1,4 @@
-package edu.escuelaing.ieti.estudiapp;
+package edu.escuelaing.ieti.estudiapp.ui.main;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +13,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import edu.escuelaing.ieti.estudiapp.R;
-import edu.escuelaing.ieti.estudiapp.PageViewModel;
 import edu.escuelaing.ieti.estudiapp.databinding.FragmentMainBinding;
 
 /**

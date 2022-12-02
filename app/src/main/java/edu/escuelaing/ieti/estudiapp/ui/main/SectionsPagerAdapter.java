@@ -1,4 +1,4 @@
-package edu.ing.escuela.ieti.estudiapp.ui.main;
+package edu.escuelaing.ieti.estudiapp.ui.main;
 
 import android.content.Context;
 
@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import edu.ing.escuela.ieti.estudiapp.R;
+import edu.escuelaing.ieti.estudiapp.R;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
