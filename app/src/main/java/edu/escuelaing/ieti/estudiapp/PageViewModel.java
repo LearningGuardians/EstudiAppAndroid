@@ -1,4 +1,4 @@
-package edu.ing.escuela.ieti.estudiapp.ui.main;
+package edu.escuelaing.ieti.estudiapp;
 
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;

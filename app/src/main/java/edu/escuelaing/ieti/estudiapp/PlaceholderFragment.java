@@ -1,4 +1,4 @@
-package edu.ing.escuela.ieti.estudiapp.ui.main;
+package edu.escuelaing.ieti.estudiapp;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,8 +12,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import edu.ing.escuela.ieti.estudiapp.R;
-import edu.ing.escuela.ieti.estudiapp.databinding.FragmentMainBinding;
+import edu.escuelaing.ieti.estudiapp.R;
+import edu.escuelaing.ieti.estudiapp.PageViewModel;
+import edu.escuelaing.ieti.estudiapp.databinding.FragmentMainBinding;
 
 /**
  * A placeholder fragment containing a simple view.
